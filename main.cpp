@@ -20,7 +20,7 @@ int main()
                 personalBudget.userRegistration();
                 break;
             case '2':
-                personalBudget.userLogin();
+                personalBudget.userLogIn();
                 break;
             case '9':
                 exit(0);
@@ -55,7 +55,7 @@ int main()
                 //zmiana hasla();
                 break;
             case '7':
-                //wyloguj sie();
+                personalBudget.userLogOut();
                 break;
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;

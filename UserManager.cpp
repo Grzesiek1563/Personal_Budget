@@ -67,7 +67,7 @@ bool UserManager::isThereALogin(string login)
     return false;
 }
 
-int UserManager::userLogin()
+int UserManager::userLogIn()
 {
     User user;
     string login = "", password = "";
@@ -104,6 +104,15 @@ int UserManager::userLogin()
     loggedUserId = 0;
     return 0;
 }
+
+
+int UserManager::userLogOut()
+{
+    loggedUserId = 0;
+    cout<<endl<<"Wylogowano. "<<endl;
+    system("pause");
+}
+
 
 
 

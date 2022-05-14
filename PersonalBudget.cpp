@@ -9,3 +9,4 @@ void PersonalBudget::userRegistration()
 {
     userManager.userRegistration();
 }
+

@@ -22,3 +22,34 @@ void FileWithUsers::addUserToFile (User user)
 
     xml.Save(getFileName());
 }
+
+vector <User> FileWithUsers::loadUsersFromFile()
+{
+    User user;
+    vector<User> users;
+    CMarkup xml;
+    bool fileExist = xml.Load(getFileName());
+    if(fileExist)
+    {
+        xml.FindElem();
+        xml.IntoElem();
+        while(xml.FindElem("User"))
+        {
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            user.setUserId(AuxiliaryMethods::convertStringToIntiger((xml.GetData())));
+            xml.FindElem("UserLogin");
+            user.setLogin(xml.GetData());
+            xml.FindElem("UserPassword");
+            user.setPassword(xml.GetData());
+            xml.FindElem("UserName");
+            user.setName(xml.GetData());
+            xml.FindElem("UserSurname");
+            user.setName(xml.GetData());
+            xml.OutOfElem();
+            users.push_back(user);
+        }
+    }
+    return users;
+}
+

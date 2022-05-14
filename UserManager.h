@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+
 #include "User.h"
 #include "FileWithUsers.h"
 using namespace std;
@@ -19,6 +20,7 @@ class UserManager
     public:
     UserManager(string FILEWITHUSERSNAME) : fileWithUsers(FILEWITHUSERSNAME)
     {
+        users = fileWithUsers.loadUsersFromFile();
         loggedUserId = 0;
     };
     bool isTheUserLoggedIn ();
@@ -27,6 +29,7 @@ class UserManager
 };
 
 #endif
+
 
 
 

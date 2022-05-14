@@ -28,6 +28,7 @@ class UserManager
     User provideNewUserData();
     int userLogIn();
     int userLogOut();
+    void changeLoggedUserPassword();
 };
 
 #endif

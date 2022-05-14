@@ -16,6 +16,7 @@ class FileWithUsers : public XmlFile
     FileWithUsers(string FILEWITHUSERSNAME) : XmlFile(FILEWITHUSERSNAME) {};
     void addUserToFile (User user);
     vector <User> loadUsersFromFile();
+    void changeUserPasswordInFile(int loggedUserId, string newPassword);
 
 
 };

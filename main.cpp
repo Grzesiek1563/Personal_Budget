@@ -52,7 +52,7 @@ int main()
                 //bilans wybrany okres();
                 break;
             case '6':
-                //zmiana hasla();
+                personalBudget.changeLoggedUserPassword();
                 break;
             case '7':
                 personalBudget.userLogOut();

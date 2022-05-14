@@ -53,3 +53,24 @@ vector <User> FileWithUsers::loadUsersFromFile()
     return users;
 }
 
+void FileWithUsers::changeUserPasswordInFile(int loggedUserId, string newPassword)
+{
+    string loggedId = AuxiliaryMethods::convertIntigerToString(loggedUserId);
+    CMarkup xml;
+    xml.Load(getFileName());
+    xml.FindElem();
+    xml.IntoElem();
+    while(xml.FindElem("User"))
+    {
+        xml.IntoElem();
+        xml.FindElem("UserId");
+        if (xml.GetData() == loggedId)
+        {
+            xml.FindElem("UserPassword");
+            xml.SetData(newPassword);
+            break;
+        }
+        xml.OutOfElem();
+    }
+    xml.Save(getFileName());
+}

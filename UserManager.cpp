@@ -113,6 +113,24 @@ int UserManager::userLogOut()
     system("pause");
 }
 
+void UserManager::changeLoggedUserPassword()
+{
+    string newPassword;
+    cout << "Podaj nowe haslo: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getUserId() == loggedUserId)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsers.changeUserPasswordInFile(loggedUserId, newPassword);
+}
+
 
 
 

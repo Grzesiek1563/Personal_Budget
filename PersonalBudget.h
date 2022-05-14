@@ -15,6 +15,7 @@ class PersonalBudget
 
     bool isTheUserLoggedIn ();
     void userRegistration();
+    int userLogin();
 
 };
 

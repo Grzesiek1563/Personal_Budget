@@ -10,3 +10,7 @@ void PersonalBudget::userRegistration()
     userManager.userRegistration();
 }
 
+int PersonalBudget::userLogin()
+{
+    userManager.userLogin();
+}

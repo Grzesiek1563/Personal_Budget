@@ -11,10 +11,8 @@ class PersonalBudget
     const string OLDEST_PERMITTED_DATE;
 
     public:
-    PersonalBudget()
-    {
-        ;
-    }
+    PersonalBudget(string FILEWITHUSERSNAME) : userManager(FILEWITHUSERSNAME) {};
+
     bool isTheUserLoggedIn ();
     void userRegistration();
 
@@ -22,3 +20,4 @@ class PersonalBudget
 };
 
 #endif
+

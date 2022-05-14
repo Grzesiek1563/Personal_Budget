@@ -13,9 +13,7 @@ void UserManager::userRegistration()
 {
     User user = provideNewUserData();
     users.push_back(user);
-
-    //zapis do pliku  plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
-
+    fileWithUsers.addUserToFile(user);
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
@@ -25,17 +23,24 @@ User UserManager::provideNewUserData()
 {
     User user;
     user.setUserId(getNewUserId());
-    string login;
+    string login, password, name, surname;
     do
     {
         cout << "Podaj login: ";
         cin >> login;
         user.setLogin(login);
     } while (isThereALogin(user.getLogin()) == true);
-    string password;
     cout << "Podaj haslo: ";
     cin >> password;
     user.setPassword(password);
+
+    cout << "Podaj imie: ";
+    cin >> name;
+    user.setName(name);
+
+    cout << "Podaj nazwisko: ";
+    cin >> surname;
+    user.setSurname(surname);
 
     return user;
 }

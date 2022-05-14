@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget;
+    PersonalBudget personalBudget("Users");
     char choice;
     while (true)
     {

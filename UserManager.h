@@ -11,24 +11,22 @@ class UserManager
 {
     int loggedUserId;
     vector <User> users;
+    FileWithUsers fileWithUsers;
 
     int getNewUserId();
     bool isThereALogin(string login);
 
-
     public:
-    UserManager()
+    UserManager(string FILEWITHUSERSNAME) : fileWithUsers(FILEWITHUSERSNAME)
     {
         loggedUserId = 0;
-    }
+    };
     bool isTheUserLoggedIn ();
     void userRegistration();
     User provideNewUserData();
-
-
-
-
 };
 
-
 #endif
+
+
+

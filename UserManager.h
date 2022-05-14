@@ -26,6 +26,8 @@ class UserManager
     bool isTheUserLoggedIn ();
     void userRegistration();
     User provideNewUserData();
+    int userLogIn();
+    int userLogOut();
 };
 
 #endif

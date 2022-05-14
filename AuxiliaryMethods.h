@@ -15,6 +15,8 @@ class AuxiliaryMethods
     static char choseUserMenuOption();
     static string convertIntigerToString(int number);
     static int convertStringToIntiger(string number);
+    static string loadLine();
+
 
 
 };

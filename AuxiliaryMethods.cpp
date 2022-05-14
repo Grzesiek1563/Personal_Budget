@@ -8,8 +8,7 @@ char AuxiliaryMethods::chooseMainMenuOption()
     cout << "    >>> MENU  GLOWNE <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Rejestracja" << endl;
-    //cout << "2. Logowanie" << endl;
-    //cout << "3. Zmiana hasla" <<endl;
+    cout << "2. Logowanie" << endl;
     cout << "9. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
@@ -52,7 +51,7 @@ char AuxiliaryMethods::choseUserMenuOption()
     //cout << "5. Bilans z wybranego okresu" << endl;
     //cout << "---------------------------" << endl;
     //cout << "6. Zmien haslo" << endl;
-    //cout << "7. Wyloguj sie" << endl;
+    cout << "7. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
     choice = AuxiliaryMethods::loadChar();
@@ -76,4 +75,12 @@ int AuxiliaryMethods::convertStringToIntiger(string number)
 
     return numberInt;
 }
+
+string AuxiliaryMethods::loadLine()
+{
+    string input = "";
+    getline(cin, input);
+    return input;
+}
+
 

@@ -17,6 +17,7 @@ class PersonalBudget
     void userRegistration();
     int userLogIn();
     int userLogOut();
+    void changeLoggedUserPassword();
 
 
 };

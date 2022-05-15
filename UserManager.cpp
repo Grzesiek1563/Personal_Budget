@@ -118,11 +118,15 @@ void UserManager::changeLoggedUserPassword()
     string newPassword;
     cout << "Podaj nowe haslo: ";
     newPassword = AuxiliaryMethods::loadLine();
-
     for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
     {
         if (itr -> getUserId() == loggedUserId)
         {
+            while(itr -> getPassword() == newPassword)
+            {
+                cout << "Nowe haslo musi roznic sie od starego. Wprowadz nowe haslo ponownie: ";
+                newPassword = AuxiliaryMethods::loadLine();
+            }
             itr -> setPassword(newPassword);
             cout << "Haslo zostalo zmienione." << endl << endl;
             system("pause");

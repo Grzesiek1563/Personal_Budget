@@ -11,15 +11,11 @@ using namespace std;
 
 class FileWithUsers : public XmlFile
 {
-
     public:
     FileWithUsers(string FILEWITHUSERSNAME) : XmlFile(FILEWITHUSERSNAME) {};
     void addUserToFile (User user);
     vector <User> loadUsersFromFile();
     void changeUserPasswordInFile(int loggedUserId, string newPassword);
-
-
 };
-
 
 #endif

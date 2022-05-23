@@ -23,24 +23,22 @@ User UserManager::provideNewUserData()
 {
     User user;
     user.setUserId(getNewUserId());
-    string login, password, name, surname;
     do
     {
         cout << "Podaj login: ";
-        cin >> login;
-        user.setLogin(login);
+        user.setLogin(AuxiliaryMethods::loadLine());
     } while (isThereALogin(user.getLogin()) == true);
+
     cout << "Podaj haslo: ";
-    cin >> password;
-    user.setPassword(password);
+    user.setPassword(AuxiliaryMethods::loadLine());
 
     cout << "Podaj imie: ";
-    cin >> name;
-    user.setName(name);
+    user.setName(AuxiliaryMethods::loadLine());
+    user.setName(AuxiliaryMethods::replaceFirstLetterWithUppercaseAndRestWithLowercase(user.getName()));
 
     cout << "Podaj nazwisko: ";
-    cin >> surname;
-    user.setSurname(surname);
+    user.setSurname(AuxiliaryMethods::loadLine());
+    user.setSurname(AuxiliaryMethods::replaceFirstLetterWithUppercaseAndRestWithLowercase(user.getSurname()));
 
     return user;
 }
@@ -135,7 +133,10 @@ void UserManager::changeLoggedUserPassword()
     fileWithUsers.changeUserPasswordInFile(loggedUserId, newPassword);
 }
 
-
+int UserManager::getLoggedUserId()
+{
+    return loggedUserId;
+}
 
 
 

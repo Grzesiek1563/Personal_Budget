@@ -6,9 +6,9 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget("Users.xml");
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml", "2000-01-01");
     char choice;
-    while (true)
+while (true)
     {
         if (!personalBudget.isTheUserLoggedIn())
         {
@@ -37,9 +37,10 @@ int main()
             switch (choice)
             {
             case '1':
-                //dodaj przychod();
+                personalBudget.addIncome();
                 break;
             case '2':
+                personalBudget.wyswietl();
                 //dodaj wydatek();
                 break;
             case '3':

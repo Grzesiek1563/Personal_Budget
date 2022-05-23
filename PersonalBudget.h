@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 #include "UserManager.h"
 #include "TransactionManager.h"
 using namespace std;
@@ -18,7 +19,7 @@ class PersonalBudget
     public:
     PersonalBudget(string FILEWITHUSERSNAME, string FILEWITHINCOMESNAME, string FILEWITHEXPENSESNAME, string OLDESTPERMITTEDDATE)
     : userManager(FILEWITHUSERSNAME), FILE_WITH_INCOMES_NAME(FILEWITHINCOMESNAME), FILE_WITH_EXPENSES_NAME(FILEWITHEXPENSESNAME),
-    OLDEST_PERMITTED_DATE(AuxiliaryMethods::convertDateStringToIntegerDate(OLDESTPERMITTEDDATE))
+    OLDEST_PERMITTED_DATE(DateOperations::convertDateStringToIntegerDate(OLDESTPERMITTEDDATE))
     {
         transactionManager = NULL;
     };

@@ -9,6 +9,7 @@
 #include "Expense.h"
 #include "FileWithIncomes.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 using namespace std;
 
 class TransactionManager

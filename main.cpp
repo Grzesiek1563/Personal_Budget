@@ -8,7 +8,7 @@ int main()
 {
     PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml", "2000-01-01");
     char choice;
-while (true)
+    while (true)
     {
         if (!personalBudget.isTheUserLoggedIn())
         {
@@ -67,3 +67,4 @@ while (true)
     }
     return 0;
 }
+

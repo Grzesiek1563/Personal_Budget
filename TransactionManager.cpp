@@ -5,21 +5,22 @@ void TransactionManager::addIncome()
     Income income;
     system("cls");
     bool itIsTodaysTransaction;
-    itIsTodaysTransaction = AuxiliaryMethods::isItTodaysTransaction();
+    itIsTodaysTransaction = DateOperations::isItTodaysTransaction();
 
     income.setIncomeId(getNewIncomeId());
     income.setUserId(LOGGED_USER_ID);
 
     if(itIsTodaysTransaction)
-        income.setDate(AuxiliaryMethods::getCurrentDate());
+        income.setDate(DateOperations::getCurrentDate());
     else
-        income.setDate(AuxiliaryMethods::provideDate(OLDEST_PERMITTED_DATE));
+        income.setDate(DateOperations::provideDate(OLDEST_PERMITTED_DATE));
 
     cout << "Podaj czego dotyczy przychod: ";
     income.setItem(AuxiliaryMethods::loadLine());
     income.setAmount(AuxiliaryMethods::provideAmonut());
     incomes.push_back(income);
     cout << "Dodano przychod.";
+    cin.ignore();
     Sleep(1500);
     //zapisywanie do pliku
 }

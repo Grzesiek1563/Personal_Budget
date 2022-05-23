@@ -67,10 +67,11 @@ bool UserManager::isThereALogin(string login)
 
 int UserManager::userLogIn()
 {
+    system("cls");
     User user;
     string login = "", password = "";
 
-    cout << endl << "Podaj login: ";
+    cout << "Podaj login: ";
     login = AuxiliaryMethods::loadLine();
     vector <User>::iterator itr = users.begin();
     while (itr != users.end())

@@ -5,6 +5,7 @@
 #include <sstream>
 #include <algorithm>
 #include <string>
+#include <sstream>
 #include <ctime>
 #include "DateOperations.h"
 using namespace std;
@@ -17,10 +18,13 @@ class AuxiliaryMethods
     static char choseUserMenuOption();
     static string convertIntigerToString(int number);
     static int convertStringToIntiger(string number);
+    static string convertDoubleToString(double number);
+    static double convertDoubleIntoDoubleWithTwoDecimalPlaces (double number);
     static string loadLine();
     static string replaceFirstLetterWithUppercaseAndRestWithLowercase (string text);
     static double provideAmonut();
-    static bool checkIfProvidedDoubleIsCorrect(string providedDouble);
+
+
 };
 
 

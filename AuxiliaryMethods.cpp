@@ -94,60 +94,50 @@ string AuxiliaryMethods::replaceFirstLetterWithUppercaseAndRestWithLowercase(str
 
 double AuxiliaryMethods::provideAmonut()
 {
-    string amount = "";
-    string providedAmount;
-    double convertedAmount;
-    bool providedAmountIsCorrect;
+    string input = "";
+    string inputWithChangedCommasIntoDots = "";
+    double amount = 0;
     cout << "Podaj kwote transakcji: ";
-    while(true)
+    while (true)
     {
-        cin >> providedAmount;
-        providedAmountIsCorrect = AuxiliaryMethods::checkIfProvidedDoubleIsCorrect(providedAmount);
-        if(providedAmountIsCorrect)
+        getline(cin, input);
+        inputWithChangedCommasIntoDots = "";
+        for (int i = 0; i < input.length(); i++)
         {
-            for(int i = 0; i < providedAmount.length(); i++)
-            {
-                if (providedAmount[i] == ',')
-                    amount += '.';
-                else
-                    amount += providedAmount[i];
-            }
+            if (input[i] == ',')
+                inputWithChangedCommasIntoDots += '.';
+            else
+                inputWithChangedCommasIntoDots += input[i];
+        }
+        stringstream myStream(inputWithChangedCommasIntoDots);
+        if (myStream >> amount)
             break;
-        }
-        cout << endl << "Wprowadziles niepoprawna kwote. Sprobuj ponownie: ";
+        cout << "Niepoprawna kwota. Wpisz ponownie. " << endl;
     }
-    //cin.ignore();
-    convertedAmount = stod(amount);
-    return convertedAmount;
+    amount = convertDoubleIntoDoubleWithTwoDecimalPlaces(amount);
+    return amount;
 }
 
 
-bool AuxiliaryMethods::checkIfProvidedDoubleIsCorrect (string providedDouble)
+string AuxiliaryMethods::convertDoubleToString(double number)
 {
-    int dotsAndCommasCount = 0;
-    bool providedDoubleIsCorrect = true;
-    int commaAsciiNumber = 44;
-    int dotAsciiNumber = 46;
-    int characterAsciiNumber;
-    for (int i = 0; i < providedDouble.length(); i++)
-    {
-        characterAsciiNumber = (int)providedDouble[i];
-        if (i == 0)
-        {
-            if(characterAsciiNumber < 49 || characterAsciiNumber > 57)
-                providedDoubleIsCorrect = false;
-        }
-        else
-        {
-            if((characterAsciiNumber < 48 || characterAsciiNumber > 57) && characterAsciiNumber != dotAsciiNumber && characterAsciiNumber != commaAsciiNumber)
-                providedDoubleIsCorrect = false;
-            else if (characterAsciiNumber == dotAsciiNumber || characterAsciiNumber == commaAsciiNumber)
-                dotsAndCommasCount++;
-        }
-        if(dotsAndCommasCount > 1)
-        {
-            providedDoubleIsCorrect = false;
-        }
-    }
-    return providedDoubleIsCorrect;
+    stringstream stream;
+    stream << number;
+    string str = stream.str();
+    return str;
 }
+
+double AuxiliaryMethods::convertDoubleIntoDoubleWithTwoDecimalPlaces (double number)
+{
+    double convertedNumber = 0;
+    stringstream stream;
+    stream.precision(2);
+    stream << fixed;
+    stream << number;
+    string str = stream.str();
+    convertedNumber = stod (str);
+    return convertedNumber;
+}
+
+
+

@@ -19,10 +19,9 @@ void TransactionManager::addIncome()
     income.setItem(AuxiliaryMethods::loadLine());
     income.setAmount(AuxiliaryMethods::provideAmonut());
     incomes.push_back(income);
+    fileWithIncomes.addIncomeToFile(income);
     cout << "Dodano przychod.";
-    cin.ignore();
     Sleep(1500);
-    //zapisywanie do pliku
 }
 
 int TransactionManager::getNewIncomeId()

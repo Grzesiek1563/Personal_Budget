@@ -114,6 +114,7 @@ int UserManager::userLogOut()
 
 void UserManager::changeLoggedUserPassword()
 {
+    system("cls");
     string newPassword;
     cout << "Podaj nowe haslo: ";
     newPassword = AuxiliaryMethods::loadLine();

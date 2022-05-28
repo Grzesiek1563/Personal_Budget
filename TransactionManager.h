@@ -25,10 +25,11 @@ class TransactionManager
     TransactionManager(string FIILEWITHINCOMESNAME, int LOGGEDUSERID, int OLDESTPERMITTEDDATE)
     : fileWithIncomes(FIILEWITHINCOMESNAME), LOGGED_USER_ID(LOGGEDUSERID), OLDEST_PERMITTED_DATE(OLDESTPERMITTEDDATE)
     {
-        //adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        incomes = fileWithIncomes.loadLoggedUserIncomesFromFile(LOGGEDUSERID);
+
     };
     void addIncome();
-    int getNewIncomeId();
+
 
     void wyswietl();
 

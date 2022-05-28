@@ -7,7 +7,7 @@ void TransactionManager::addIncome()
     bool itIsTodaysTransaction;
     itIsTodaysTransaction = DateOperations::isItTodaysTransaction();
 
-    income.setIncomeId(getNewIncomeId());
+    income.setIncomeId(fileWithIncomes.getLastIncomeId() + 1);
     income.setUserId(LOGGED_USER_ID);
 
     if(itIsTodaysTransaction)
@@ -22,14 +22,6 @@ void TransactionManager::addIncome()
     fileWithIncomes.addIncomeToFile(income);
     cout << "Dodano przychod.";
     Sleep(1500);
-}
-
-int TransactionManager::getNewIncomeId()
-{
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getIncomeId() + 1;
 }
 
 void TransactionManager::wyswietl()

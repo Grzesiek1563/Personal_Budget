@@ -78,7 +78,13 @@ int AuxiliaryMethods::convertStringToIntiger(string number)
 string AuxiliaryMethods::loadLine()
 {
     string input = "";
-    getline(cin, input);
+    while(true)
+    {
+        getline(cin, input);
+        if (input != "")
+            break;
+        cout << endl << "Nie wprowadzono danych. Sprobuj ponownie: ";
+    }
     return input;
 }
 
@@ -112,7 +118,7 @@ double AuxiliaryMethods::provideAmonut()
         stringstream myStream(inputWithChangedCommasIntoDots);
         if (myStream >> amount)
             break;
-        cout << "Niepoprawna kwota. Wpisz ponownie. " << endl;
+        cout << "Niepoprawna kwota. Wpisz ponownie: " << endl;
     }
     amount = convertDoubleIntoDoubleWithTwoDecimalPlaces(amount);
     return amount;
@@ -139,5 +145,10 @@ double AuxiliaryMethods::convertDoubleIntoDoubleWithTwoDecimalPlaces (double num
     return convertedNumber;
 }
 
+double AuxiliaryMethods::convertStringToDouble(string number)
+{
+    double convertedNumber = stod(number);
+    return convertedNumber;
+}
 
 

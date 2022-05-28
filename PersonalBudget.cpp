@@ -15,7 +15,8 @@ int PersonalBudget::userLogIn()
     userManager.userLogIn();
     if (userManager.isTheUserLoggedIn())
     {
-        transactionManager = new TransactionManager(FILE_WITH_INCOMES_NAME, userManager.getLoggedUserId(), OLDEST_PERMITTED_DATE);
+        transactionManager = new TransactionManager(FILE_WITH_INCOMES_NAME, FILE_WITH_EXPENSES_NAME,
+        userManager.getLoggedUserId(), OLDEST_PERMITTED_DATE);
     }
 }
 
@@ -42,6 +43,23 @@ void PersonalBudget::addIncome()
         system("pause");
     }
 }
+
+void PersonalBudget::addExpense()
+{
+    if(userManager.isTheUserLoggedIn())
+    {
+        transactionManager -> addExpense();
+    }
+    else
+    {
+        cout<<"Aby dodac wydatek, nalezy najpierw sie zalogowac"<<endl;
+        system("pause");
+    }
+}
+
+
+
+
 
 void PersonalBudget::wyswietl()
 {

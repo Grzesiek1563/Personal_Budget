@@ -35,6 +35,7 @@ class PersonalBudget
     int userLogOut();
     void changeLoggedUserPassword();
     void addIncome();
+    void addExpense();
     int getOldestPermittedDate();
 
 

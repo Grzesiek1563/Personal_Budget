@@ -28,7 +28,7 @@ int DateOperations::provideDate(int oldestPermittedDate)
 bool DateOperations::isItTodaysTransaction()
 {
     char choice;
-    cout << "Czy przychod dotyczy dnia dzisiejszego? Y/N: ";
+    cout << "Czy transakcja dotyczy dnia dzisiejszego? Y/N: ";
     while (true)
     {
         choice = AuxiliaryMethods::loadChar();

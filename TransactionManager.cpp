@@ -24,6 +24,30 @@ void TransactionManager::addIncome()
     Sleep(1500);
 }
 
+void TransactionManager::addExpense()
+{
+    Expense expense;
+    system("cls");
+    bool itIsTodaysTransaction;
+    itIsTodaysTransaction = DateOperations::isItTodaysTransaction();
+
+    expense.setExpenseId(fileWithExpenses.getLastExpenseId() + 1);
+    expense.setUserId(LOGGED_USER_ID);
+
+    if(itIsTodaysTransaction)
+        expense.setDate(DateOperations::getCurrentDate());
+    else
+        expense.setDate(DateOperations::provideDate(OLDEST_PERMITTED_DATE));
+
+    cout << "Podaj czego dotyczy wydatek: ";
+    expense.setItem(AuxiliaryMethods::loadLine());
+    expense.setAmount(AuxiliaryMethods::provideAmonut());
+    expenses.push_back(expense);
+    fileWithExpenses.addExpenseToFile(expense);
+    cout << "Dodano wydatek.";
+    Sleep(1500);
+}
+
 void TransactionManager::wyswietl()
 {
     for (int i = 0; i<incomes.size(); i++)

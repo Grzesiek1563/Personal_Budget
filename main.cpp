@@ -40,10 +40,11 @@ int main()
                 personalBudget.addIncome();
                 break;
             case '2':
-                personalBudget.wyswietl();
+                personalBudget.addExpense();
                 //dodaj wydatek();
                 break;
             case '3':
+                personalBudget.wyswietl();
                 //bilans ten miesiac();
                 break;
             case '4':

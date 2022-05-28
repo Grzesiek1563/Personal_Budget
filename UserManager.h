@@ -29,6 +29,7 @@ class UserManager
     int userLogIn();
     int userLogOut();
     void changeLoggedUserPassword();
+    int getLoggedUserId();
 };
 
 #endif

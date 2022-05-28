@@ -9,3 +9,8 @@ bool XmlFile::isTheFileEmpty()
     else
         return true;
 }
+
+string XmlFile::getFileName()
+{
+    return FILE_NAME;
+}

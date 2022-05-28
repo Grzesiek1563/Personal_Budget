@@ -11,10 +11,7 @@ class XmlFile
     const string FILE_NAME;
     public:
     XmlFile(string fileName) : FILE_NAME(fileName) {};
-    string getFileName()
-    {
-        return FILE_NAME;
-    }
+    string getFileName();
     bool isTheFileEmpty();
 };
 

@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget("Users.xml");
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml", "2000-01-01");
     char choice;
     while (true)
     {
@@ -37,12 +37,14 @@ int main()
             switch (choice)
             {
             case '1':
-                //dodaj przychod();
+                personalBudget.addIncome();
                 break;
             case '2':
+                personalBudget.addExpense();
                 //dodaj wydatek();
                 break;
             case '3':
+                personalBudget.wyswietl();
                 //bilans ten miesiac();
                 break;
             case '4':
@@ -66,3 +68,4 @@ int main()
     }
     return 0;
 }
+

@@ -9,7 +9,6 @@ void FileWithIncomes::addIncomeToFile(Income income)
     {
         xml.AddElem("Incomes");
     }
-
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("Income");
@@ -23,7 +22,6 @@ void FileWithIncomes::addIncomeToFile(Income income)
     xml.Save(getFileName());
 
 }
-
 
 vector <Income> FileWithIncomes::loadLoggedUserIncomesFromFile(int loggedUserId)
 {

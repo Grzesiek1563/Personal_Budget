@@ -9,7 +9,6 @@ void FileWithUsers::addUserToFile (User user)
     {
         xml.AddElem("Users");
     }
-
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("User");

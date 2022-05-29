@@ -108,7 +108,7 @@ int UserManager::userLogIn()
 int UserManager::userLogOut()
 {
     loggedUserId = 0;
-    cout<<endl<<"Wylogowano. "<<endl;
+    cout << endl << "Wylogowano. " << endl;
     system("pause");
 }
 

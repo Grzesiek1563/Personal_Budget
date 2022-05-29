@@ -24,7 +24,11 @@ class TransactionManager
     const int LOGGED_USER_ID;
     const int OLDEST_PERMITTED_DATE;
 
-
+    vector <Income> getIncomesFromScope(int fromDate, int toDate);
+    vector <Expense> getExpensesFromScope(int fromDate, int toDate);
+    void displaySortedIncomes(vector <Income> incomesToDisplay);
+    void displaySortedExpenses(vector <Expense> expensesToDisplay);
+    void displayBalance(vector <Income> userIncomes, vector <Expense> userExpenses);
 
     public:
     TransactionManager(string FIILEWITHINCOMESNAME, string FIILEWITHEXPENSESNAME, int LOGGEDUSERID, int OLDESTPERMITTEDDATE)
@@ -39,13 +43,7 @@ class TransactionManager
     void displayCurrentMonthBalance();
     void displayPreviousMonthBalance();
     void displaySelectedPeriodBalance();
-    vector <Income> getIncomesFromScope(int fromDate, int toDate);
-    vector <Expense> getExpensesFromScope(int fromDate, int toDate);
-    void displaySortedIncomes(vector <Income> incomesToDisplay);
-    void displaySortedExpenses(vector <Expense> expensesToDisplay);
-    void displayBalance(vector <Income> userIncomes, vector <Expense> userExpenses);
 
 };
-
 
 #endif

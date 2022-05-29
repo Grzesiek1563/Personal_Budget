@@ -2,8 +2,6 @@
 #define PERSONALBUDGET_H
 
 #include <iostream>
-#include "AuxiliaryMethods.h"
-#include "DateOperations.h"
 #include "UserManager.h"
 #include "TransactionManager.h"
 using namespace std;
@@ -29,18 +27,16 @@ class PersonalBudget
         transactionManager = NULL;
     }
 
-    bool isTheUserLoggedIn ();
+    bool isTheUserLoggedIn();
     void userRegistration();
     int userLogIn();
     int userLogOut();
     void changeLoggedUserPassword();
     void addIncome();
     void addExpense();
-    int getOldestPermittedDate();
     void displayCurrentMonthBalance();
     void displayPreviousMonthBalance();
     void displaySelectedPeriodBalance();
-
 };
 
 #endif

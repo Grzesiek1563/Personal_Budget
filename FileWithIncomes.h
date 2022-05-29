@@ -22,5 +22,4 @@ class FileWithIncomes : public XmlFile
     int getLastIncomeId();
 };
 
-
 #endif

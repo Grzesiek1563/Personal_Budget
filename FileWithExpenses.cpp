@@ -9,7 +9,6 @@ void FileWithExpenses::addExpenseToFile(Expense expense)
     {
         xml.AddElem("Expenses");
     }
-
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("Expense");
@@ -21,7 +20,6 @@ void FileWithExpenses::addExpenseToFile(Expense expense)
     xml.AddElem("Amount", AuxiliaryMethods::convertDoubleToString(expense.getAmount()));
     lastExpenseId += 1;
     xml.Save(getFileName());
-
 }
 
 

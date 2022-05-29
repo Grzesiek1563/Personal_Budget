@@ -12,11 +12,6 @@ class Expense : public Transaction
     public:
     int getExpenseId();
     void setExpenseId(int newExpenseId);
-    /*bool operator < (const Expense &x) const
-    {
-        return date < x.date;
-    }*/
 };
-
 
 #endif

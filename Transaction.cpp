@@ -1,6 +1,5 @@
 #include "Transaction.h"
 
-
 int Transaction::getUserId()
 {
     return userId;

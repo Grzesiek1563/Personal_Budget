@@ -57,46 +57,40 @@ int DateOperations::getCurrentDate()
 int DateOperations::getDayFromDate (int date)
 {
     string fullDate = AuxiliaryMethods::convertIntigerToString(date);
-    string day = fullDate.substr(6,2);
-    int convertedDay = AuxiliaryMethods::convertStringToIntiger(day);
-    return convertedDay;
+    int day = AuxiliaryMethods::convertStringToIntiger(fullDate.substr(6,2));
+    return day;
 }
 
 int DateOperations::getDayFromDate (string date)
 {
-    string day = date.substr(8,2);
-    int convertedDay = AuxiliaryMethods::convertStringToIntiger(day);
-    return convertedDay;
+    int day = AuxiliaryMethods::convertStringToIntiger(date.substr(8,2));
+    return day;
 }
 
 int DateOperations::getMonthFromDate (int date)
 {
     string fullDate = AuxiliaryMethods::convertIntigerToString(date);
-    string month = fullDate.substr(4,2);
-    int convertedMonth = AuxiliaryMethods::convertStringToIntiger(month);
-    return convertedMonth;
+    int month = AuxiliaryMethods::convertStringToIntiger(fullDate.substr(4,2));
+    return month;
 }
 
 int DateOperations::getMonthFromDate (string date)
 {
-    string month = date.substr(5,2);
-    int convertedMonth = AuxiliaryMethods::convertStringToIntiger(month);
-    return convertedMonth;
+    int month = AuxiliaryMethods::convertStringToIntiger(date.substr(5,2));
+    return month;
 }
 
 int DateOperations::getYearFromDate (int date)
 {
     string fullDate = AuxiliaryMethods::convertIntigerToString(date);
-    string year = fullDate.substr(0,4);
-    int convertedYear = AuxiliaryMethods::convertStringToIntiger(year);
-    return convertedYear;
+    int year = AuxiliaryMethods::convertStringToIntiger(fullDate.substr(0,4));
+    return year;
 }
 
 int DateOperations::getYearFromDate (string date)
 {
-    string year = date.substr(0,4);
-    int convertedYear = AuxiliaryMethods::convertStringToIntiger(year);
-    return convertedYear;
+    int year = AuxiliaryMethods::convertStringToIntiger(date.substr(0,4));
+    return year;
 }
 
 bool DateOperations::checkIfProvidedYearIsCorrect (string providedDate, int oldestPermittedDate)
@@ -231,9 +225,8 @@ int DateOperations::getFirstDayOfCurrentMonthDate()
     string firstDayOfCurrentMonthDateAsString = "";
     const string firstDayOfMonth = "01";
 
-    int currentDate = DateOperations::getCurrentDate();
-    string currentDateAsString = AuxiliaryMethods::convertIntigerToString(currentDate);
-    firstDayOfCurrentMonthDateAsString = currentDateAsString.substr(0,4) + '-' + currentDateAsString.substr(4,2) + '-' + firstDayOfMonth;
+    string currentDate = AuxiliaryMethods::convertIntigerToString(DateOperations::getCurrentDate());
+    firstDayOfCurrentMonthDateAsString = currentDate.substr(0,4) + '-' + currentDate.substr(4,2) + '-' + firstDayOfMonth;
     firstDayOfCurrentMonthDate = DateOperations::convertDateStringToIntegerDate(firstDayOfCurrentMonthDateAsString);
     return firstDayOfCurrentMonthDate;
 }
@@ -273,12 +266,10 @@ int DateOperations::getLastDayOfPreviousMonthDate()
     string lastDayOfPreviousMonthDateAsString = "";
     int lastDayOfPreviousMonthDate;
     string firstDayOfPreviousMonthDate = AuxiliaryMethods::convertIntigerToString(DateOperations::getFirstDayOfPreviousMonthDate());
-    string previousMonthAsString = firstDayOfPreviousMonthDate.substr(4,2);
-    string yearOfPreviousMonth = firstDayOfPreviousMonthDate.substr(0,4);
-    int previousMonth = AuxiliaryMethods::convertStringToIntiger(previousMonthAsString);
-    int year = AuxiliaryMethods::convertStringToIntiger(yearOfPreviousMonth);
-    int numberOfDaysInPreviousMonth = checkNumberOfDaysInMonth(previousMonth, year);
-    lastDayOfPreviousMonthDateAsString = yearOfPreviousMonth + previousMonthAsString + AuxiliaryMethods::convertIntigerToString(numberOfDaysInPreviousMonth);
+    string previousMonth = firstDayOfPreviousMonthDate.substr(4,2);
+    string year = firstDayOfPreviousMonthDate.substr(0,4);
+    int numberOfDaysInPreviousMonth = checkNumberOfDaysInMonth(AuxiliaryMethods::convertStringToIntiger(previousMonth), AuxiliaryMethods::convertStringToIntiger(year));
+    lastDayOfPreviousMonthDateAsString = year + previousMonth + AuxiliaryMethods::convertIntigerToString(numberOfDaysInPreviousMonth);
     lastDayOfPreviousMonthDate = AuxiliaryMethods::convertStringToIntiger(lastDayOfPreviousMonthDateAsString);
     return lastDayOfPreviousMonthDate;
 }

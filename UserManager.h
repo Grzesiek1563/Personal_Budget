@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <windows.h>
 
 #include "User.h"
 #include "FileWithUsers.h"

@@ -7,7 +7,7 @@ int DateOperations::provideDate(int oldestPermittedDate)
     bool providedDateIsCorrect = false;
     const int CORRECT_NUMBER_OF_CHARACTERS_IN_DATE = 10;
     int numberOfCharactersInProvidedDate = 0;
-    cout << "Wprowadz date w formacie rrrr-mm-dd (max 2000-01-01): ";
+    cout << "Wprowadz date w formacie rrrr-mm-dd (min 2000-01-01): ";
     while (true)
     {
         providedDate = AuxiliaryMethods::loadLine();
@@ -122,6 +122,16 @@ bool DateOperations::checkIfProvidedDateIsCurrentYearDate (string providedDate)
         return false;
 }
 
+bool DateOperations::checkIfProvidedDateIsCurrentMonthDate (string providedDate)
+{
+    int currentMonth = DateOperations::getMonthFromDate(DateOperations::getCurrentDate());
+    int providedMonth = DateOperations::getMonthFromDate(providedDate);
+    if(currentMonth == providedMonth)
+        return true;
+    else
+        return false;
+}
+
 bool DateOperations::checkIfProvidedMonthIsCorrect (string providedDate)
 {
     bool providedMonthIsCorrect = false;
@@ -168,10 +178,11 @@ bool DateOperations::checkIfProvidedDayIsCorrect (string providedDate)
 {
     bool providedDayIsCorrect = false;
     bool itIsCurrentYear = DateOperations::checkIfProvidedDateIsCurrentYearDate(providedDate);
+    bool itIsCurrentMonth = DateOperations::checkIfProvidedDateIsCurrentMonthDate(providedDate);
     int providedMonth = DateOperations::getMonthFromDate(providedDate);
     int providedDay = DateOperations::getDayFromDate(providedDate);
     int currentDay = DateOperations::getDayFromDate(DateOperations::getCurrentDate());
-    if(itIsCurrentYear)
+    if(itIsCurrentYear && itIsCurrentMonth)
     {
         if(providedDay >=1 && providedDay <= currentDay)
             providedDayIsCorrect = true;

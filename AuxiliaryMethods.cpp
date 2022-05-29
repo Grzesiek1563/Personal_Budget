@@ -118,7 +118,7 @@ double AuxiliaryMethods::provideAmonut()
         stringstream myStream(inputWithChangedCommasIntoDots);
         if (myStream >> amount)
             break;
-        cout << "Niepoprawna kwota. Wpisz ponownie: " << endl;
+        cout << "Niepoprawna kwota. Wpisz ponownie: ";
     }
     amount = convertDoubleIntoDoubleWithTwoDecimalPlaces(amount);
     return amount;

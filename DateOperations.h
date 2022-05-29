@@ -22,6 +22,7 @@ class DateOperations
     static int getYearFromDate (string date);
     static bool checkIfProvidedYearIsCorrect (string providedDate, int oldestPermittedDate);
     static bool checkIfProvidedDateIsCurrentYearDate (string providedDate);
+    static bool checkIfProvidedDateIsCurrentMonthDate(string providedDate);
     static bool checkIfProvidedMonthIsCorrect (string providedDate);
     static int checkNumberOfDaysInMonth (int month, int year);
     static bool checkIfProvidedDayIsCorrect (string providedDate);

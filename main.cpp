@@ -49,7 +49,7 @@ int main()
                 personalBudget.displayPreviousMonthBalance();
                 break;
             case '5':
-                //personalBudget.displaySelectedPeriodBalance();
+                personalBudget.displaySelectedPeriodBalance();
                 break;
             case '6':
                 personalBudget.changeLoggedUserPassword();

@@ -39,8 +39,7 @@ class PersonalBudget
     int getOldestPermittedDate();
     void displayCurrentMonthBalance();
     void displayPreviousMonthBalance();
-    //void displaySelectedPeriodBalance();
-
+    void displaySelectedPeriodBalance();
 
 };
 

@@ -38,7 +38,7 @@ class TransactionManager
     void addExpense();
     void displayCurrentMonthBalance();
     void displayPreviousMonthBalance();
-    //void displaySelectedPeriodBalance();
+    void displaySelectedPeriodBalance();
     vector <Income> getIncomesFromScope(int fromDate, int toDate);
     vector <Expense> getExpensesFromScope(int fromDate, int toDate);
     void displaySortedIncomes(vector <Income> incomesToDisplay);

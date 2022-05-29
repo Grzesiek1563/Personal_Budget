@@ -20,7 +20,7 @@ void TransactionManager::addIncome()
     income.setAmount(AuxiliaryMethods::provideAmonut());
     incomes.push_back(income);
     fileWithIncomes.addIncomeToFile(income);
-    cout << "Dodano przychod.";
+    cout << endl << "Dodano przychod.";
     Sleep(1500);
 }
 
@@ -60,8 +60,9 @@ void TransactionManager::displayCurrentMonthBalance()
 
     if(currentMonthIncomes.empty() == true && currentMonthExpenses.empty() == true)
     {
+        system("cls");
         cout << "W tym miesiacu nie wygenerowano zadnych przychodow ani wydatkow. ";
-        Sleep(1500);
+        Sleep(3000);
     }
     else
     {
@@ -103,11 +104,16 @@ void TransactionManager::displaySortedIncomes(vector <Income> incomesToDisplay)
 {
     sort(incomesToDisplay.begin(), incomesToDisplay.end());
     cout << "--------------- PRZYCHODY ---------------" << endl;
-    for (int i = 0; i < incomesToDisplay.size(); i++)
+    if (incomesToDisplay.empty() == true)
+        cout << "Brak odnotowanych przychodow." << endl << endl;
+    else
     {
-        cout << i+1 <<". Data przychodu: " << DateOperations::convertIntegerDateToStringDate(incomesToDisplay[i].getDate()) << endl;
-        cout << "Rodzaj przychodu: " << incomesToDisplay[i].getItem() << endl;
-        cout << "Kwota przychodu: " << setprecision(2) << fixed << incomesToDisplay[i].getAmount() << endl << endl;
+        for (int i = 0; i < incomesToDisplay.size(); i++)
+        {
+            cout << i+1 <<". Data przychodu: " << DateOperations::convertIntegerDateToStringDate(incomesToDisplay[i].getDate()) << endl;
+            cout << "Rodzaj przychodu: " << incomesToDisplay[i].getItem() << endl;
+            cout << "Kwota przychodu: " << setprecision(2) << fixed << incomesToDisplay[i].getAmount() << endl << endl;
+        }
     }
 }
 
@@ -115,11 +121,16 @@ void TransactionManager::displaySortedExpenses(vector <Expense> expensesToDispla
 {
     sort(expensesToDisplay.begin(), expensesToDisplay.end());
     cout << "--------------- WYDATKI ---------------" << endl;
-    for (int i = 0; i < expensesToDisplay.size(); i++)
+    if (expensesToDisplay.empty() == true)
+        cout << "Brak odnotowanych wydatkow." << endl << endl;
+    else
     {
-        cout << i+1 <<". Data wydatku: " << DateOperations::convertIntegerDateToStringDate(expensesToDisplay[i].getDate()) << endl;
-        cout << "Rodzaj wydatku: " << expensesToDisplay[i].getItem() << endl;
-        cout << "Kwota wydatku: " << setprecision(2) << fixed << expensesToDisplay[i].getAmount() << endl << endl;
+        for (int i = 0; i < expensesToDisplay.size(); i++)
+        {
+            cout << i+1 <<". Data wydatku: " << DateOperations::convertIntegerDateToStringDate(expensesToDisplay[i].getDate()) << endl;
+            cout << "Rodzaj wydatku: " << expensesToDisplay[i].getItem() << endl;
+            cout << "Kwota wydatku: " << setprecision(2) << fixed << expensesToDisplay[i].getAmount() << endl << endl;
+        }
     }
 }
 
@@ -156,8 +167,9 @@ void TransactionManager::displayPreviousMonthBalance()
 
     if(previousMonthIncomes.empty() == true && previousMonthExpenses.empty() == true)
     {
+        system("cls");
         cout << "W poprzednim miesiacu nie wygenerowano zadnych przychodow ani wydatkow. ";
-        Sleep(1500);
+        Sleep(3000);
     }
     else
     {
@@ -169,13 +181,14 @@ void TransactionManager::displayPreviousMonthBalance()
     }
 }
 
-/*void TransactionManager::displaySelectedPeriodBalance()
+void TransactionManager::displaySelectedPeriodBalance()
 {
+    system("cls");
     vector <Income> selectedPeriodIncomes;
     vector <Expense> selectedPeriodExpenses;
-    cout << "Wprowadz date poczatkowa zakresu: ";
+    cout << "---- DATA POCZATKOWA ZAKRESU ----" << endl;
     int selectedPeriodFromDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
-    cout << endl << "Wprowadz date koncowa zakresu: ";
+    cout << endl << "---- DATA KONCOWA ZAKRESU ----" << endl;
     int selectedPeriodToDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
     if(selectedPeriodFromDate > selectedPeriodToDate)
     {
@@ -188,8 +201,9 @@ void TransactionManager::displayPreviousMonthBalance()
 
     if(selectedPeriodIncomes.empty() == true && selectedPeriodExpenses.empty() == true)
     {
+        system("cls");
         cout << "W wybranym okresie nie wygenerowano zadnych przychodow ani wydatkow. ";
-        Sleep(1500);
+        Sleep(3000);
     }
     else
     {
@@ -199,5 +213,5 @@ void TransactionManager::displayPreviousMonthBalance()
         displayBalance(selectedPeriodIncomes, selectedPeriodExpenses);
         system("pause");
     }
-}*/
+}
 

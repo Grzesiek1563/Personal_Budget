@@ -27,6 +27,8 @@ class DateOperations
     static bool checkIfProvidedDayIsCorrect (string providedDate);
     static bool checkIfProvidedDateIsCorrect(string providedDate, int oldestPermittedDate);
     static int getFirstDayOfCurrentMonthDate();
+    static int getFirstDayOfPreviousMonthDate();
+    static int getLastDayOfPreviousMonthDate();
 
 };
 

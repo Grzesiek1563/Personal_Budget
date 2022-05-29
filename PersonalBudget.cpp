@@ -61,3 +61,14 @@ void PersonalBudget::displayCurrentMonthBalance()
 {
     transactionManager -> displayCurrentMonthBalance();
 }
+
+void PersonalBudget::displayPreviousMonthBalance()
+{
+    transactionManager -> displayPreviousMonthBalance();
+}
+
+/*void PersonalBudget::displaySelectedPeriodBalance()
+{
+    transactionManager -> displaySelectedPeriodBalance();
+}*/
+

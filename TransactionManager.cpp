@@ -71,7 +71,6 @@ void TransactionManager::displayCurrentMonthBalance()
         displayBalance(currentMonthIncomes, currentMonthExpenses);
         system("pause");
     }
-
 }
 
 vector <Income> TransactionManager::getIncomesFromScope(int fromDate, int toDate)
@@ -141,7 +140,64 @@ void TransactionManager::displayBalance(vector <Income> userIncomes, vector <Exp
     cout << "--------------- PODSUMOWANIE ---------------" << endl;
     cout << "Suma przychodow: " << setprecision(2) << fixed << incomesSum << endl;
     cout << "Suma wydatkow: " << setprecision(2) << fixed << expensesSum << endl;
-    cout << "Bilans: " << setprecision(2) << fixed << balance << endl;
+    cout << "Bilans: " << setprecision(2) << fixed << balance << endl << endl;
 }
 
+
+void TransactionManager::displayPreviousMonthBalance()
+{
+    vector <Income> previousMonthIncomes;
+    vector <Expense> previousMonthExpenses;
+    int firstDayOfPreviousMonthDate = DateOperations::getFirstDayOfPreviousMonthDate();
+    int lastDayOfPreviousMonthDate = DateOperations::getLastDayOfPreviousMonthDate();
+
+    previousMonthIncomes = getIncomesFromScope(firstDayOfPreviousMonthDate, lastDayOfPreviousMonthDate);
+    previousMonthExpenses = getExpensesFromScope(firstDayOfPreviousMonthDate, lastDayOfPreviousMonthDate);
+
+    if(previousMonthIncomes.empty() == true && previousMonthExpenses.empty() == true)
+    {
+        cout << "W poprzednim miesiacu nie wygenerowano zadnych przychodow ani wydatkow. ";
+        Sleep(1500);
+    }
+    else
+    {
+        system("cls");
+        displaySortedExpenses(previousMonthExpenses);
+        displaySortedIncomes(previousMonthIncomes);
+        displayBalance(previousMonthIncomes, previousMonthExpenses);
+        system("pause");
+    }
+}
+
+/*void TransactionManager::displaySelectedPeriodBalance()
+{
+    vector <Income> selectedPeriodIncomes;
+    vector <Expense> selectedPeriodExpenses;
+    cout << "Wprowadz date poczatkowa zakresu: ";
+    int selectedPeriodFromDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
+    cout << endl << "Wprowadz date koncowa zakresu: ";
+    int selectedPeriodToDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
+    if(selectedPeriodFromDate > selectedPeriodToDate)
+    {
+        int AuxiliaryDate = selectedPeriodFromDate;
+        selectedPeriodFromDate = selectedPeriodToDate;
+        selectedPeriodToDate = AuxiliaryDate;
+    }
+    selectedPeriodIncomes = getIncomesFromScope(selectedPeriodFromDate, selectedPeriodToDate);
+    selectedPeriodExpenses = getExpensesFromScope(selectedPeriodFromDate, selectedPeriodToDate);
+
+    if(selectedPeriodIncomes.empty() == true && selectedPeriodExpenses.empty() == true)
+    {
+        cout << "W wybranym okresie nie wygenerowano zadnych przychodow ani wydatkow. ";
+        Sleep(1500);
+    }
+    else
+    {
+        system("cls");
+        displaySortedExpenses(selectedPeriodExpenses);
+        displaySortedIncomes(selectedPeriodIncomes);
+        displayBalance(selectedPeriodIncomes, selectedPeriodExpenses);
+        system("pause");
+    }
+}*/
 

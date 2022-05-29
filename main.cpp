@@ -44,13 +44,12 @@ int main()
                 break;
             case '3':
                 personalBudget.displayCurrentMonthBalance();
-                //bilans ten miesiac();
                 break;
             case '4':
-                //bilans poprzedni miesiac();
+                personalBudget.displayPreviousMonthBalance();
                 break;
             case '5':
-                //bilans wybrany okres();
+                //personalBudget.displaySelectedPeriodBalance();
                 break;
             case '6':
                 personalBudget.changeLoggedUserPassword();

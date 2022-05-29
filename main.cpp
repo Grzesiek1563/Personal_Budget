@@ -41,17 +41,15 @@ int main()
                 break;
             case '2':
                 personalBudget.addExpense();
-                //dodaj wydatek();
                 break;
             case '3':
-                personalBudget.wyswietl();
-                //bilans ten miesiac();
+                personalBudget.displayCurrentMonthBalance();
                 break;
             case '4':
-                //bilans poprzedni miesiac();
+                personalBudget.displayPreviousMonthBalance();
                 break;
             case '5':
-                //bilans wybrany okres();
+                personalBudget.displaySelectedPeriodBalance();
                 break;
             case '6':
                 personalBudget.changeLoggedUserPassword();

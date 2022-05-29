@@ -57,13 +57,18 @@ void PersonalBudget::addExpense()
     }
 }
 
-
-
-
-
-void PersonalBudget::wyswietl()
+void PersonalBudget::displayCurrentMonthBalance()
 {
-    transactionManager -> wyswietl();
+    transactionManager -> displayCurrentMonthBalance();
 }
 
+void PersonalBudget::displayPreviousMonthBalance()
+{
+    transactionManager -> displayPreviousMonthBalance();
+}
+
+void PersonalBudget::displaySelectedPeriodBalance()
+{
+    transactionManager -> displaySelectedPeriodBalance();
+}
 

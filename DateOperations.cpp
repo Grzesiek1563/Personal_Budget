@@ -7,7 +7,7 @@ int DateOperations::provideDate(int oldestPermittedDate)
     bool providedDateIsCorrect = false;
     const int CORRECT_NUMBER_OF_CHARACTERS_IN_DATE = 10;
     int numberOfCharactersInProvidedDate = 0;
-    cout << "Wprowadz date w formacie rrrr-mm-dd (max 2000-01-01): ";
+    cout << "Wprowadz date w formacie rrrr-mm-dd (min 2000-01-01): ";
     while (true)
     {
         providedDate = AuxiliaryMethods::loadLine();
@@ -122,6 +122,16 @@ bool DateOperations::checkIfProvidedDateIsCurrentYearDate (string providedDate)
         return false;
 }
 
+bool DateOperations::checkIfProvidedDateIsCurrentMonthDate (string providedDate)
+{
+    int currentMonth = DateOperations::getMonthFromDate(DateOperations::getCurrentDate());
+    int providedMonth = DateOperations::getMonthFromDate(providedDate);
+    if(currentMonth == providedMonth)
+        return true;
+    else
+        return false;
+}
+
 bool DateOperations::checkIfProvidedMonthIsCorrect (string providedDate)
 {
     bool providedMonthIsCorrect = false;
@@ -168,10 +178,11 @@ bool DateOperations::checkIfProvidedDayIsCorrect (string providedDate)
 {
     bool providedDayIsCorrect = false;
     bool itIsCurrentYear = DateOperations::checkIfProvidedDateIsCurrentYearDate(providedDate);
+    bool itIsCurrentMonth = DateOperations::checkIfProvidedDateIsCurrentMonthDate(providedDate);
     int providedMonth = DateOperations::getMonthFromDate(providedDate);
     int providedDay = DateOperations::getDayFromDate(providedDate);
     int currentDay = DateOperations::getDayFromDate(DateOperations::getCurrentDate());
-    if(itIsCurrentYear)
+    if(itIsCurrentYear && itIsCurrentMonth)
     {
         if(providedDay >=1 && providedDay <= currentDay)
             providedDayIsCorrect = true;
@@ -205,4 +216,69 @@ int DateOperations::convertDateStringToIntegerDate(string dateToConvert)
     string fullDate = year + month + day;
     int convertedDate = AuxiliaryMethods::convertStringToIntiger(fullDate);
     return convertedDate;
+}
+
+string DateOperations::convertIntegerDateToStringDate(int dateToConvert)
+{
+    string providedDate = AuxiliaryMethods::convertIntigerToString(dateToConvert);
+    string convertedDate = providedDate.substr(0,4) + '-' + providedDate.substr(4,2) + '-' + providedDate.substr(6,2);
+    return convertedDate;
+}
+
+int DateOperations::getFirstDayOfCurrentMonthDate()
+{
+    int firstDayOfCurrentMonthDate;
+    string firstDayOfCurrentMonthDateAsString = "";
+    const string firstDayOfMonth = "01";
+
+    int currentDate = DateOperations::getCurrentDate();
+    string currentDateAsString = AuxiliaryMethods::convertIntigerToString(currentDate);
+    firstDayOfCurrentMonthDateAsString = currentDateAsString.substr(0,4) + '-' + currentDateAsString.substr(4,2) + '-' + firstDayOfMonth;
+    firstDayOfCurrentMonthDate = DateOperations::convertDateStringToIntegerDate(firstDayOfCurrentMonthDateAsString);
+    return firstDayOfCurrentMonthDate;
+}
+
+
+int DateOperations::getFirstDayOfPreviousMonthDate()
+{
+    string firstDayOfPreviousMonthDateAsString = "";
+    int firstDayOfPreviousMonthDate;
+    string previousMonthAsString = "";
+    int previousMonth, calculatedYear;
+    string currentDate = AuxiliaryMethods::convertIntigerToString(DateOperations::getCurrentDate());
+    int currentYear = AuxiliaryMethods::convertStringToIntiger(currentDate.substr(0,4));
+    int currentMonth = AuxiliaryMethods::convertStringToIntiger(currentDate.substr(4,2));
+    if (currentMonth == 1)
+    {
+        previousMonth = 12;
+        calculatedYear = currentYear - 1;
+    }
+    else
+    {
+        previousMonth = currentMonth - 1;
+        calculatedYear = currentYear;
+    }
+    if (previousMonth < 10)
+        previousMonthAsString = '0' + AuxiliaryMethods::convertIntigerToString(previousMonth);
+    else
+        previousMonthAsString = AuxiliaryMethods::convertIntigerToString(previousMonth);
+
+    firstDayOfPreviousMonthDateAsString = AuxiliaryMethods::convertIntigerToString(calculatedYear) + previousMonthAsString + "01";
+    firstDayOfPreviousMonthDate = AuxiliaryMethods::convertStringToIntiger(firstDayOfPreviousMonthDateAsString);
+    return firstDayOfPreviousMonthDate;
+}
+
+int DateOperations::getLastDayOfPreviousMonthDate()
+{
+    string lastDayOfPreviousMonthDateAsString = "";
+    int lastDayOfPreviousMonthDate;
+    string firstDayOfPreviousMonthDate = AuxiliaryMethods::convertIntigerToString(DateOperations::getFirstDayOfPreviousMonthDate());
+    string previousMonthAsString = firstDayOfPreviousMonthDate.substr(4,2);
+    string yearOfPreviousMonth = firstDayOfPreviousMonthDate.substr(0,4);
+    int previousMonth = AuxiliaryMethods::convertStringToIntiger(previousMonthAsString);
+    int year = AuxiliaryMethods::convertStringToIntiger(yearOfPreviousMonth);
+    int numberOfDaysInPreviousMonth = checkNumberOfDaysInMonth(previousMonth, year);
+    lastDayOfPreviousMonthDateAsString = yearOfPreviousMonth + previousMonthAsString + AuxiliaryMethods::convertIntigerToString(numberOfDaysInPreviousMonth);
+    lastDayOfPreviousMonthDate = AuxiliaryMethods::convertStringToIntiger(lastDayOfPreviousMonthDateAsString);
+    return lastDayOfPreviousMonthDate;
 }

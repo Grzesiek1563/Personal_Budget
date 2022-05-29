@@ -37,10 +37,9 @@ class PersonalBudget
     void addIncome();
     void addExpense();
     int getOldestPermittedDate();
-
-
-    void wyswietl();
-
+    void displayCurrentMonthBalance();
+    void displayPreviousMonthBalance();
+    void displaySelectedPeriodBalance();
 
 };
 

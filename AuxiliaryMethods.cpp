@@ -45,9 +45,9 @@ char AuxiliaryMethods::choseUserMenuOption()
     cout << "---------------------------" << endl;
     cout << "1. Dodaj przychod" << endl;
     cout << "2. Dodaj wydatek" << endl;
-    //cout << "3. Bilans z biezacego miesiaca" << endl;
-    //cout << "4. Bilans z poprzedniego miesiaca" << endl;
-    //cout << "5. Bilans z wybranego okresu" << endl;
+    cout << "3. Bilans z biezacego miesiaca" << endl;
+    cout << "4. Bilans z poprzedniego miesiaca" << endl;
+    cout << "5. Bilans z wybranego okresu" << endl;
     cout << "---------------------------" << endl;
     cout << "6. Zmien haslo" << endl;
     cout << "7. Wyloguj sie" << endl;
@@ -118,7 +118,7 @@ double AuxiliaryMethods::provideAmonut()
         stringstream myStream(inputWithChangedCommasIntoDots);
         if (myStream >> amount)
             break;
-        cout << "Niepoprawna kwota. Wpisz ponownie: " << endl;
+        cout << "Niepoprawna kwota. Wpisz ponownie: ";
     }
     amount = convertDoubleIntoDoubleWithTwoDecimalPlaces(amount);
     return amount;

@@ -21,6 +21,10 @@ class Transaction
     void setDate(int newDate);
     void setItem(string newItem);
     void setAmount(double newAmount);
+    bool operator < (const Transaction &x) const
+    {
+        return date < x.date;
+    }
 
 };
 

@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
+#include <iomanip>
 #include "Income.h"
 #include "Expense.h"
 #include "FileWithIncomes.h"
@@ -34,10 +36,12 @@ class TransactionManager
     };
     void addIncome();
     void addExpense();
-
-
-    void wyswietl();
-
+    void displayCurrentMonthBalance();
+    vector <Income> getIncomesFromScope(int fromDate, int toDate);
+    vector <Expense> getExpensesFromScope(int fromDate, int toDate);
+    void displaySortedIncomes(vector <Income> incomesToDisplay);
+    void displaySortedExpenses(vector <Expense> expensesToDisplay);
+    void displayBalance(vector <Income> userIncomes, vector <Expense> userExpenses);
 };
 
 

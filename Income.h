@@ -11,6 +11,10 @@ class Income : public Transaction
     public:
     int getIncomeId();
     void setIncomeId(int newIncomeId);
+    /*bool operator < (const Income &x) const
+    {
+        return date < x.date;
+    }*/
 };
 
 

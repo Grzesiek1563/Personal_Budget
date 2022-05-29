@@ -41,10 +41,9 @@ int main()
                 break;
             case '2':
                 personalBudget.addExpense();
-                //dodaj wydatek();
                 break;
             case '3':
-                personalBudget.wyswietl();
+                personalBudget.displayCurrentMonthBalance();
                 //bilans ten miesiac();
                 break;
             case '4':

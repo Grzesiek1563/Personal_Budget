@@ -206,3 +206,24 @@ int DateOperations::convertDateStringToIntegerDate(string dateToConvert)
     int convertedDate = AuxiliaryMethods::convertStringToIntiger(fullDate);
     return convertedDate;
 }
+
+string DateOperations::convertIntegerDateToStringDate(int dateToConvert)
+{
+    string providedDate = AuxiliaryMethods::convertIntigerToString(dateToConvert);
+    string convertedDate = providedDate.substr(0,4) + '-' + providedDate.substr(4,2) + '-' + providedDate.substr(6,2);
+    return convertedDate;
+}
+
+int DateOperations::getFirstDayOfCurrentMonthDate()
+{
+    int firstDayOfCurrentMonthDate;
+    string firstDayOfCurrentMonthDateAsString = "";
+    const string firstDayOfMonth = "01";
+
+    int currentDate = DateOperations::getCurrentDate();
+    string currentDateAsString = AuxiliaryMethods::convertIntigerToString(currentDate);
+    firstDayOfCurrentMonthDateAsString = currentDateAsString.substr(0,4) + '-' + currentDateAsString.substr(4,2) + '-' + firstDayOfMonth;
+    firstDayOfCurrentMonthDate = DateOperations::convertDateStringToIntegerDate(firstDayOfCurrentMonthDateAsString);
+    return firstDayOfCurrentMonthDate;
+}
+

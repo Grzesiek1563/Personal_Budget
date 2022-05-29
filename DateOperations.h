@@ -11,6 +11,7 @@ class DateOperations
     public:
     static int provideDate(int oldestPermittedDate);
     static int convertDateStringToIntegerDate(string dateToConvert);
+    static string convertIntegerDateToStringDate(int dateToConvert);
     static bool isItTodaysTransaction();
     static int getCurrentDate();
     static int getDayFromDate (int date);
@@ -25,6 +26,7 @@ class DateOperations
     static int checkNumberOfDaysInMonth (int month, int year);
     static bool checkIfProvidedDayIsCorrect (string providedDate);
     static bool checkIfProvidedDateIsCorrect(string providedDate, int oldestPermittedDate);
+    static int getFirstDayOfCurrentMonthDate();
 
 };
 

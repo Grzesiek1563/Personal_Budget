@@ -101,7 +101,7 @@ string AuxiliaryMethods::replaceFirstLetterWithUppercaseAndRestWithLowercase(str
 double AuxiliaryMethods::provideAmonut()
 {
     string input = "";
-    string inputWithChangedCommasIntoDots = "";
+    string inputWithChangedCommasIntoDots;
     double amount = 0;
     cout << "Podaj kwote transakcji: ";
     while (true)

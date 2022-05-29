@@ -39,7 +39,7 @@ void PersonalBudget::addIncome()
     }
     else
     {
-        cout<<"Aby dodac przychod, nalezy najpierw sie zalogowac"<<endl;
+        cout << "Aby dodac przychod, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }
@@ -52,7 +52,7 @@ void PersonalBudget::addExpense()
     }
     else
     {
-        cout<<"Aby dodac wydatek, nalezy najpierw sie zalogowac"<<endl;
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }
@@ -71,4 +71,5 @@ void PersonalBudget::displaySelectedPeriodBalance()
 {
     transactionManager -> displaySelectedPeriodBalance();
 }
+
 

@@ -24,10 +24,7 @@ class AuxiliaryMethods
     static string loadLine();
     static string replaceFirstLetterWithUppercaseAndRestWithLowercase (string text);
     static double provideAmonut();
-
-
 };
-
 
 #endif
 

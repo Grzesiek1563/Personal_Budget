@@ -22,5 +22,4 @@ class FileWithExpenses : public XmlFile
     int getLastExpenseId();
 };
 
-
 #endif

@@ -16,6 +16,7 @@ class UserManager
 
     int getNewUserId();
     bool isThereALogin(string login);
+    User provideNewUserData();
 
     public:
     UserManager(string FILEWITHUSERSNAME) : fileWithUsers(FILEWITHUSERSNAME)
@@ -23,9 +24,8 @@ class UserManager
         users = fileWithUsers.loadUsersFromFile();
         loggedUserId = 0;
     };
-    bool isTheUserLoggedIn ();
+    bool isTheUserLoggedIn();
     void userRegistration();
-    User provideNewUserData();
     int userLogIn();
     int userLogOut();
     void changeLoggedUserPassword();

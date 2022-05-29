@@ -30,10 +30,6 @@ class DateOperations
     static int getFirstDayOfCurrentMonthDate();
     static int getFirstDayOfPreviousMonthDate();
     static int getLastDayOfPreviousMonthDate();
-
 };
-
-
-
 
 #endif

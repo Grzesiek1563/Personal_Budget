@@ -18,7 +18,7 @@ int DateOperations::provideDate(int oldestPermittedDate)
             if (providedDateIsCorrect)
                 break;
         }
-        cout << endl << "Wprowadzono niepoprawna date. Sprobuj ponownie: ";
+        cout << "Wprowadzono niepoprawna date. Sprobuj ponownie: ";
     }
     convertedDate = DateOperations::convertDateStringToIntegerDate(providedDate);
     return convertedDate;

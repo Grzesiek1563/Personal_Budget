@@ -11,6 +11,7 @@ bool UserManager::isTheUserLoggedIn()
 
 void UserManager::userRegistration()
 {
+    system("cls");
     User user = provideNewUserData();
     users.push_back(user);
     fileWithUsers.addUserToFile(user);
@@ -58,7 +59,7 @@ bool UserManager::isThereALogin(string login)
     {
         if(users[i].getLogin() == login)
         {
-            cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
+            cout << endl << "Istnieje uzytkownik o takim loginie." << endl << endl;
             return true;
         }
     }
@@ -70,40 +71,46 @@ int UserManager::userLogIn()
     system("cls");
     User user;
     string login = "", password = "";
-
-    cout << "Podaj login: ";
-    login = AuxiliaryMethods::loadLine();
-    vector <User>::iterator itr = users.begin();
-    while (itr != users.end())
+    if(users.empty() == false)
     {
-        if (itr -> getLogin() == login)
+        cout << "Podaj login: ";
+        login = AuxiliaryMethods::loadLine();
+        vector <User>::iterator itr = users.begin();
+        while (itr != users.end())
         {
-            for (int attemptsNumber = 3; attemptsNumber > 0; attemptsNumber--)
+            if (itr -> getLogin() == login)
             {
-                cout << "Podaj haslo. Pozostalo prob: " << attemptsNumber << ": ";
-                password = AuxiliaryMethods::loadLine();
-
-                if (itr -> getPassword() == password)
+                for (int attemptsNumber = 3; attemptsNumber > 0; attemptsNumber--)
                 {
-                    cout << endl << "Zalogowales sie." << endl << endl;
-                    system("pause");
-                    loggedUserId = itr -> getUserId();
-                    return 0;
+                    cout << "Podaj haslo. Pozostalo prob: " << attemptsNumber << ": ";
+                    password = AuxiliaryMethods::loadLine();
+
+                    if (itr -> getPassword() == password)
+                    {
+                        cout << endl << "Zalogowales sie." << endl << endl;
+                        system("pause");
+                        loggedUserId = itr -> getUserId();
+                        return 0;
+                    }
                 }
+                cout << "Wprowadzono 3 razy bledne haslo." << endl;
+                system("pause");
+                loggedUserId = 0;
+                return 0;
             }
-            cout << "Wprowadzono 3 razy bledne haslo." << endl;
-            system("pause");
-            loggedUserId = 0;
-            return 0;
+            itr++;
         }
-        itr++;
+        cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+        system("pause");
+        loggedUserId = 0;
     }
-    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
-    system("pause");
-    loggedUserId = 0;
+    else
+    {
+        cout << "Aby sie zalogowac dodaj konto. ";
+        Sleep(3000);
+    }
     return 0;
 }
-
 
 int UserManager::userLogOut()
 {
@@ -128,7 +135,7 @@ void UserManager::changeLoggedUserPassword()
                 newPassword = AuxiliaryMethods::loadLine();
             }
             itr -> setPassword(newPassword);
-            cout << "Haslo zostalo zmienione." << endl << endl;
+            cout << endl << "Haslo zostalo zmienione." << endl << endl;
             system("pause");
         }
     }

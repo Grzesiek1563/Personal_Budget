@@ -7,6 +7,7 @@
 #include "Markup.h"
 #include "Expense.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 using namespace std;
 
 class FileWithExpenses : public XmlFile

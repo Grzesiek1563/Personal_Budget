@@ -15,9 +15,9 @@ void FileWithExpenses::addExpenseToFile(Expense expense)
     xml.IntoElem();
     xml.AddElem("ExpenseId", expense.getExpenseId());
     xml.AddElem("UserId", expense.getUserId());
-    xml.AddElem("Date", expense.getDate());
+    xml.AddElem("Date", DateOperations::convertIntegerDateToStringDate(expense.getDate()));
     xml.AddElem("Item", expense.getItem());
-    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleToString(expense.getAmount()));
+    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleIntoStringWithTwoDecimalPlaces(expense.getAmount()));
     lastExpenseId += 1;
     xml.Save(getFileName());
 }
@@ -41,7 +41,7 @@ vector <Expense> FileWithExpenses::loadLoggedUserExpensesFromFile(int loggedUser
             xml.FindElem("UserId");
             expense.setUserId(AuxiliaryMethods::convertStringToIntiger((xml.GetData())));
             xml.FindElem("Date");
-            expense.setDate(AuxiliaryMethods::convertStringToIntiger((xml.GetData())));
+            expense.setDate(DateOperations::convertDateStringToIntegerDate((xml.GetData())));
             xml.FindElem("Item");
             expense.setItem(xml.GetData());
             xml.FindElem("Amount");

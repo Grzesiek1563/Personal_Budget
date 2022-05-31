@@ -44,7 +44,7 @@ void TransactionManager::addExpense()
     expense.setAmount(AuxiliaryMethods::provideAmonut());
     expenses.push_back(expense);
     fileWithExpenses.addExpenseToFile(expense);
-    cout << "Dodano wydatek.";
+    cout << endl << "Dodano wydatek.";
     Sleep(1500);
 }
 
@@ -186,15 +186,18 @@ void TransactionManager::displaySelectedPeriodBalance()
     system("cls");
     vector <Income> selectedPeriodIncomes;
     vector <Expense> selectedPeriodExpenses;
-    cout << "---- DATA POCZATKOWA ZAKRESU ----" << endl;
-    int selectedPeriodFromDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
-    cout << endl << "---- DATA KONCOWA ZAKRESU ----" << endl;
-    int selectedPeriodToDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
-    if(selectedPeriodFromDate > selectedPeriodToDate)
+    int selectedPeriodFromDate, selectedPeriodToDate;
+    while (true)
     {
-        int AuxiliaryDate = selectedPeriodFromDate;
-        selectedPeriodFromDate = selectedPeriodToDate;
-        selectedPeriodToDate = AuxiliaryDate;
+        cout << "---- DATA POCZATKOWA ZAKRESU ----" << endl;
+        selectedPeriodFromDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
+        cout << endl << "---- DATA KONCOWA ZAKRESU ----" << endl;
+        selectedPeriodToDate = DateOperations::provideDate(OLDEST_PERMITTED_DATE);
+        if(selectedPeriodFromDate <= selectedPeriodToDate)
+            break;
+        cout << endl << "Wprowadzono niepoprawny zakres dat. Koncowa data zakresu musi byc starsza badz rowna dacie poczatkowej. Sprobuj ponownie.";
+        Sleep(6000);
+        system("cls");
     }
     selectedPeriodIncomes = getIncomesFromScope(selectedPeriodFromDate, selectedPeriodToDate);
     selectedPeriodExpenses = getExpensesFromScope(selectedPeriodFromDate, selectedPeriodToDate);

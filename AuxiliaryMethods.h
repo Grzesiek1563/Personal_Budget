@@ -20,7 +20,7 @@ class AuxiliaryMethods
     static int convertStringToIntiger(string number);
     static string convertDoubleToString(double number);
     static double convertStringToDouble(string number);
-    static double convertDoubleIntoDoubleWithTwoDecimalPlaces (double number);
+    static string convertDoubleIntoStringWithTwoDecimalPlaces (double number);
     static string loadLine();
     static string replaceFirstLetterWithUppercaseAndRestWithLowercase (string text);
     static double provideAmonut();

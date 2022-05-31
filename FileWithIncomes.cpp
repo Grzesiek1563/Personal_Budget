@@ -4,7 +4,7 @@ void FileWithIncomes::addIncomeToFile(Income income)
 {
     CMarkup xml;
     bool fileExist = xml.Load(getFileName());
-
+    string amountWithTwoDecimalPlaces;
     if(!fileExist)
     {
         xml.AddElem("Incomes");
@@ -15,12 +15,11 @@ void FileWithIncomes::addIncomeToFile(Income income)
     xml.IntoElem();
     xml.AddElem("IncomeId", income.getIncomeId());
     xml.AddElem("UserId", income.getUserId());
-    xml.AddElem("Date", income.getDate());
+    xml.AddElem("Date", DateOperations::convertIntegerDateToStringDate(income.getDate()));
     xml.AddElem("Item", income.getItem());
-    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleToString(income.getAmount()));
+    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleIntoStringWithTwoDecimalPlaces(income.getAmount()));
     lastIncomeId += 1;
     xml.Save(getFileName());
-
 }
 
 vector <Income> FileWithIncomes::loadLoggedUserIncomesFromFile(int loggedUserId)
@@ -41,7 +40,7 @@ vector <Income> FileWithIncomes::loadLoggedUserIncomesFromFile(int loggedUserId)
             xml.FindElem("UserId");
             income.setUserId(AuxiliaryMethods::convertStringToIntiger((xml.GetData())));
             xml.FindElem("Date");
-            income.setDate(AuxiliaryMethods::convertStringToIntiger((xml.GetData())));
+            income.setDate(DateOperations::convertDateStringToIntegerDate((xml.GetData())));
             xml.FindElem("Item");
             income.setItem(xml.GetData());
             xml.FindElem("Amount");

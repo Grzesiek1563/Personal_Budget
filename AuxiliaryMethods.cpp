@@ -120,7 +120,6 @@ double AuxiliaryMethods::provideAmonut()
             break;
         cout << "Niepoprawna kwota. Wpisz ponownie: ";
     }
-    amount = convertDoubleIntoDoubleWithTwoDecimalPlaces(amount);
     return amount;
 }
 
@@ -133,16 +132,25 @@ string AuxiliaryMethods::convertDoubleToString(double number)
     return str;
 }
 
-double AuxiliaryMethods::convertDoubleIntoDoubleWithTwoDecimalPlaces (double number)
+string AuxiliaryMethods::convertDoubleIntoStringWithTwoDecimalPlaces (double number)
 {
-    double convertedNumber = 0;
-    stringstream stream;
-    stream.precision(2);
-    stream << fixed;
-    stream << number;
-    string str = stream.str();
-    convertedNumber = stod (str);
-    return convertedNumber;
+    string givenDouble = AuxiliaryMethods::convertDoubleToString(number);
+    string convertedDoubleIntoStringWithTwoDecimalPlaces = "";
+    bool thereWasADot = false;
+    int decimalNumbersCounter = 0;
+    for (int i = 0; i < givenDouble.length(); i++)
+    {
+        convertedDoubleIntoStringWithTwoDecimalPlaces += givenDouble[i];
+        if (givenDouble[i] == '.')
+            thereWasADot = true;
+        if(thereWasADot && givenDouble[i] != '.')
+            decimalNumbersCounter ++;
+    }
+    if(decimalNumbersCounter == 0)
+        convertedDoubleIntoStringWithTwoDecimalPlaces += ".00";
+    else if (decimalNumbersCounter == 1)
+        convertedDoubleIntoStringWithTwoDecimalPlaces += '0';
+    return convertedDoubleIntoStringWithTwoDecimalPlaces;
 }
 
 double AuxiliaryMethods::convertStringToDouble(string number)
